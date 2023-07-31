@@ -1,0 +1,78 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server 1st post",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "json-server 2nd post",
+      "author": "typicode"
+    },
+    {
+      "id": 3,
+      "title": "json-server 3rd post",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment 1",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "some comment 2",
+      "postId": 2
+    },
+    {
+      "id": 3,
+      "body": "some comment 3",
+      "postId": 3
+    }
+  ],
+  "users": [
+    {
+      "id": "N@gmail.com",
+      "profileId": 1
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "interests": [
+        "react",
+        "JavaScript",
+        "CSS"
+      ]
+    }
+  ],
+  "colors": [
+    {
+      "id": 1,
+      "label": "black"
+    },
+    {
+      "id": 2,
+      "label": "white"
+    },
+    {
+      "id": 3,
+      "label": "red"
+    },
+    {
+      "id": 4,
+      "label": "blue"
+    },
+    {
+      "id": 5,
+      "label": "yellow"
+    },
+    {
+      "id": 6,
+      "label": "green"
+    }
+  ]
+}
