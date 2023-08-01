@@ -2,7 +2,8 @@ import React from "react";
 import { useQueries } from "react-query";
 import axios from "axios";
 
-const fetchPost = (postId) => {
+const fetchPost = ({ queryKey }) => {
+    const [, postId] = queryKey;
     return axios.get(`http://localhost:4000/posts/${postId}`)
 }
 
@@ -11,12 +12,12 @@ export const DynamicParallelQueries = ({ postIds }) => {
         postIds.map((id) => {
             return {
                 queryKey: ["post", id],
-                queryFn: () => fetchPost(id)
+                queryFn: fetchPost
             }
         })
     );
 
-    console.log({queryResults})
+    console.log({ queryResults })
     return (
         <div>
             <h2>Dynamic Parallel Queries</h2>

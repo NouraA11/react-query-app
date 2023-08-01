@@ -14,19 +14,22 @@ export const RQPostsPage = () => {
         console.log('Perform side effect after encountring an error', error)
     }
 
-    const {isLoading, data, isError, error, isFetching, refetch} = usePosts(onSuccess, onError);
-    
+    const { isLoading, data, isError, error, isFetching, refetch } = usePosts(onSuccess, onError);
+
     const { mutate: addPost } = useAddPost();
 
     const handleAddPost = () => {
-        console.log({title, author})
-        const post = {title, author};
+        console.log({ title, author })
+        const post = { title, author };
         addPost(post)
     }
+    const handleAuthorChange = (e) => setAuthor(e.target.value)
+
+    const handleTitleChange = (e) => setTitle(e.target.value)
 
     if (isLoading || isFetching) {
         return <h2>Loading...</h2>
-      }
+    }
 
     if (isError) {
         return <h2>{error.message}</h2>
@@ -36,34 +39,34 @@ export const RQPostsPage = () => {
             <h2>RQ Posts Page</h2>
             <div>
                 <input
-                type='text'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder='Post title'
-                required={true}
+                    type='text'
+                    value={title}
+                    onChange={handleTitleChange}
+                    placeholder='Post title'
+                    required
                 />
                 <input
-                type='text'
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-                placeholder='Post author'
-                required={true}
+                    type='text'
+                    value={author}
+                    onChange={handleAuthorChange}
+                    placeholder='Post author'
+                    required
                 />
-                <button 
-                onClick={handleAddPost} 
-                disabled={title ==="" || author ===""}
+                <button
+                    onClick={handleAddPost}
+                    disabled={!title || !author}
                 >Add post</button>
             </div>
-                <button onClick={refetch}>Fetch posts</button>
+            <button onClick={refetch}>Fetch posts</button>
             {
                 data?.data.map((post) => {
                     return (
-                    <div key={post.id}>
-                        <Link to={`/posts/${post.id}`}>{post.title}</Link>
-                    </div>
-                )})
+                        <div key={post.id}>
+                            <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                        </div>
+                    )
+                })
             }
         </div>
     )
-  }
-  
+}
